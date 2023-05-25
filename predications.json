@@ -1,0 +1,27 @@
+[
+    {
+        "question": "Where does the play take place?",
+        "answer": "Denmark",
+        "result": " Denmark."
+    },
+    {
+        "question": "What is the name of the castle?",
+        "answer": "Elsinore",
+        "result": " Elsinore"
+    },
+    {
+        "question": "What are the first words spoken in the play?",
+        "answer": "Who's there?",
+        "result": " The first words spoken in the play are \"Who's there?\" spoken by Bernardo."
+    },
+    {
+        "question": "How has Ophelia died?",
+        "answer": "She has supposedly drowned (ambiguity surrounds her death).",
+        "result": " Ophelia has died by drowning."
+    },
+    {
+        "question": "When was Hamlet written?",
+        "answer": "1600-1601",
+        "result": " Hamlet was written by William Shakespeare in the early 1600s."
+    }
+]

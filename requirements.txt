@@ -1,0 +1,5 @@
+wikipedia
+requests
+bs4
+streamlit
+langchain
