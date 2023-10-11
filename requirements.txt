@@ -3,3 +3,5 @@ requests
 bs4
 streamlit
 langchain
+pymupdf
+faiss-cpu
