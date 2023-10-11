@@ -1,5 +1,6 @@
 import dotenv
 import os
+import openai
 import streamlit as st
 from langchain import OpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -11,9 +12,12 @@ from langchain.document_loaders import WikipediaLoader
 from langchain.chains import RetrievalQA
 
 dotenv.load_dotenv()
-openai_api_key = os.getenv("OPENAI_API_KEY")
+openai.api_type = "azure"
+openai.api_version = "2023-05-15" 
+openai.api_base = os.getenv("AZURE_OPENAI_API_BASE")
+openai.api_key = os.getenv("AZURE_OPENAI_API_KEY")
 
-llm = OpenAI(temperature = 0, openai_api_key = openai_api_key)
+llm = OpenAI(temperature = 0, openai_api_key = openai.api_key, engine="gpt-35-turbo")
 
 def load_pdf():
     loader = PyMuPDFLoader("hamlet.pdf")
@@ -54,7 +58,12 @@ elif selection == "Wiki":
 if doc:
     text_splitter = RecursiveCharacterTextSplitter(chunk_size = 2000, chunk_overlap = 200)
     docs = text_splitter.split_documents(doc)
-    embeddings = OpenAIEmbeddings(openai_api_key = openai_api_key)
+    embeddings = OpenAIEmbeddings(
+        openai_api_key=openai.api_key,
+        deployment="text-embedding-ada-002",
+        openai_api_type='azure',
+        chunk_size=1
+    )
     knowledge_base = FAISS.from_documents(docs, embeddings)
 
     qa = RetrievalQA.from_chain_type(
